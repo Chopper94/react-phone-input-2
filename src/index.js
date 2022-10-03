@@ -592,6 +592,8 @@ class PhoneInput extends React.Component {
 
       if (lastChar == ')') {
         this.numberInputRef.setSelectionRange(formattedNumber.length - 1, formattedNumber.length - 1);
+      } else if (diff < 0 && caretPosition === 1 && formattedNumber.length === 2 && oldFormattedText.length >= formattedNumber.length) {
+        this.numberInputRef.setSelectionRange(formattedNumber.length, formattedNumber.length);
       } else if (caretPosition > 0 && oldFormattedText.length >= formattedNumber.length) {
         this.numberInputRef.setSelectionRange(caretPosition, caretPosition);
       } else if (oldCaretPosition < oldFormattedText.length) {
